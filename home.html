@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplicação Web Produtiva</title>
+  <link rel="stylesheet" href="/Styles/style.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h1>Minha App</h1>
+      <nav>
+        <ul>
+          <li><a href="#todo">To-Do List</a></li>
+          <li><a href="#calendar">Calendário</a></li>
+          <li><a href="#weather">Tempo</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- To-Do List Section -->
+      <section id="todo" class="section">
+        <h2>Lista de Tarefas</h2>
+        <form id="task-form">
+          <input type="text" id="task-input" placeholder="Nova tarefa" required>
+          <button type="submit">Adicionar</button>
+        </form>
+        <ul id="task-list"></ul>
+      </section>
+
+      <!-- Calendar Section -->
+      <section id="calendar" class="section">
+        <h2>Calendário</h2>
+        <div id="calendar-widget"></div>
+      </section>
+
+      <!-- Weather Section -->
+      <section id="weather" class="section">
+        <h2>Tempo e Temperatura</h2>
+        <div id="weather-widget">
+          <p>Carregando...</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/Scripts/scripts.js"></script>
+</body>
+</html>
