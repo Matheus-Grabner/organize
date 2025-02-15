@@ -4,8 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Organize</title>
-  <link rel="stylesheet" href="/Styles/style.css">
+  <title>Organize - Quadro Kanban</title>
+  <link rel="stylesheet" href="Styles/style.css">
+  <!-- SortableJS -->
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 </head>
 
 <body>
@@ -15,7 +17,7 @@
       <h1>Organize</h1>
       <nav>
         <ul>
-          <li><a href="#todo">To-Do List</a></li>
+          <li><a href="#todo">Quadro Kanban</a></li>
           <li><a href="#calendar">Calendário</a></li>
           <li><a href="#weather">Tempo</a></li>
         </ul>
@@ -24,23 +26,35 @@
 
     <!-- Main Content -->
     <main class="main-content">
-      <!-- To-Do List Section -->
+      <!-- Quadro Kanban -->
       <section id="todo" class="section">
-        <h2>Lista de Tarefas</h2>
+        <h2>Quadro Kanban</h2>
         <form id="task-form">
           <input type="text" id="task-input" placeholder="Nova tarefa" required>
           <button type="submit">Adicionar</button>
         </form>
-        <ul id="task-list"></ul>
+        <div class="kanban-board">
+          <div class="kanban-column" id="todo-column">
+            <h3>A Fazer</h3>
+            <ul id="todo-list" class="task-list"></ul>
+          </div>
+          <div class="kanban-column" id="doing-column">
+            <h3>Fazendo</h3>
+            <ul id="doing-list" class="task-list"></ul>
+          </div>
+          <div class="kanban-column" id="done-column">
+            <h3>Feito</h3>
+            <ul id="done-list" class="task-list"></ul>
+          </div>
+        </div>
       </section>
 
-      <!-- Calendar Section -->
+      <!-- Outras seções (Calendário e Tempo) -->
       <section id="calendar" class="section">
         <h2>Calendário</h2>
         <div id="calendar-widget"></div>
       </section>
 
-      <!-- Weather Section -->
       <section id="weather" class="section">
         <h2>Tempo e Temperatura</h2>
         <div id="weather-widget">

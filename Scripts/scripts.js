@@ -1,30 +1,50 @@
 // To-Do List
 const taskForm = document.getElementById('task-form');
 const taskInput = document.getElementById('task-input');
-const taskList = document.getElementById('task-list');
+const todoList = document.getElementById('todo-list');
+
+// Inicializar SortableJS para as colunas
+Sortable.create(todoList, {
+  group: 'tasks',
+  animation: 150,
+});
+
+Sortable.create(document.getElementById('doing-list'), {
+  group: 'tasks',
+  animation: 150,
+});
+
+Sortable.create(document.getElementById('done-list'), {
+  group: 'tasks',
+  animation: 150,
+});
 
 taskForm.addEventListener('submit', function (e) {
   e.preventDefault();
   const taskText = taskInput.value.trim();
 
   if (taskText !== '') {
-    addTask(taskText);
+    addTask(taskText, todoList);
     taskInput.value = '';
   }
 });
 
-function addTask(text) {
+function addTask(text, list) {
   const li = document.createElement('li');
+  li.className = 'task-item';
   li.innerHTML = `
-    ${text}
-    <button onclick="removeTask(this)">Remover</button>
+    <div class="task-header">
+      <input type="text" value="${text}" class="task-title">
+      <button onclick="removeTask(this)">Remover</button>
+    </div>
+    <textarea class="task-notes" placeholder="Adicionar anotações..."></textarea>
   `;
-  taskList.appendChild(li);
+  list.appendChild(li);
 }
 
 function removeTask(button) {
-  const li = button.parentElement;
-  taskList.removeChild(li);
+  const li = button.closest('.task-item');
+  li.remove();
 }
 
 // Weather Widget
@@ -36,8 +56,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}
   .then(response => response.json())
   .then(data => {
     let weather = data.weather[0].description;
-    const weatherFormated = weather.charAt(0).toUpperCase() +  weather.slice(1);
-    console.log(weather)
+    const weatherFormated = weather.charAt(0).toUpperCase() + weather.slice(1);
     const temp = data.main.temp;
     weatherWidget.innerHTML = `
       <p>Cidade: ${city}</p>
