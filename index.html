@@ -5,9 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Organize - Kanban</title>
-  <link rel="stylesheet" href="Styles/style.css">
+  <link rel="stylesheet" href="./Styles/style.css">
   <!-- SortableJS -->
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+  <!-- FullCalendar CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" rel="stylesheet">
+
+  <!-- FullCalendar JS -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales/pt-br.js"></script>
 </head>
 
 <body>
@@ -64,8 +70,19 @@
     </main>
   </div>
 
-  <script src="/Scripts/scripts.js"></script>
+  <!-- Caixa de diálogo para adicionar marcação -->
+  <div id="event-dialog" class="dialog-overlay">
+    <div class="dialog-box">
+      <h3>Adicionar Marcação</h3>
+      <input type="text" id="event-title" placeholder="Nome da marcação" />
+      <div class="dialog-buttons">
+        <button id="save-event">Salvar</button>
+        <button id="cancel-event">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./Scripts/scripts.js"></script>
 </body>
-<!-- Grabner -->
 
 </html>
